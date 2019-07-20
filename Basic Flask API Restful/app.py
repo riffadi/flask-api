@@ -1,6 +1,8 @@
 from flask import Flask, request
 from flask_restful import Resource, Api
 
+import models
+
 app = Flask(__name__)
 api = Api(app)
 
@@ -16,4 +18,5 @@ class User(Resource):
 api.add_resource(User, '/user/<string:user_id>')
 
 if __name__ == '__main__':
+	models.initialize()
 	app.run(debug=True)

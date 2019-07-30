@@ -6,7 +6,7 @@ DATABASE = SqliteDatabase('api.db')
 
 class Message(Model):
 	content = TextField()
-	datetime = DateTimeField(default=datetime.datetime.now())
+	published_at = DateTimeField(default=datetime.datetime.now())
 
 
 	class Meta:
@@ -16,5 +16,5 @@ class Message(Model):
 
 def initialize():
 	DATABASE.connect()
-	DATABASE.create_tables([Message])
+	DATABASE.create_tables([Message], safe=True)
 	DATABASE.close()
